@@ -1,0 +1,149 @@
+HW_1. The first part
+Linux terminal (GitBash) commands
+1) Посмотреть где я 
+ pwd 
+
+2) Создать папку 
+ mkdir group_30_free
+
+3) Зайти в папку
+  cd !$ или (зайти в только что созданную папку) cd group_30_free
+
+4) Создать 3 папки
+  mkdir qa1 qa2 qa3
+
+5) Зайти в любую папку
+  cd qa3
+
+6) Создать 5 файлов (3 txt,2 json)
+  touch readme.txt,readme2.txt,readme3.txt,json1.json,json2.json
+
+7) Создать 3 папки
+  mkdir -p qa4 qa5 qa6
+
+8. Вывести список содержимого папки 
+  ls -1a
+
+9) Открыть любой txt файл
+  vim readme2.txt
+
+10) написать туда что-нибудь, любой текст 
+(123456
+Hello world
+!!!)
+
+11)  сохранить и выйти
+ esc :wq Enter
+
+12) Выйти из папки на уровень выше
+  cd -
+
+13) переместить любые 2 файла, которые вы создали, в любую другую папку
+
+mv qa3/readme3.txt qa3/readme.txt qa1/
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку
+
+  cp qa1/readme3.txt qa1/readme.txt qa2/
+15) Найти файл по имени 
+ find . -name "readme2.txt"
+
+Результат:
+./qa3/readme2.txt
+
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает
+cd qa3
+tail -F readme2.txt
+
+17) вывести несколько первых строк из текстового файла
+head -2 readme2.txt
+
+18) вывести несколько последних строк из текстового файла
+tail -2 readme2.txt
+
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает.
+less radme2.txt
+
+20) вывести дату и время
+date
+=========
+
+The second part
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request
+
+REQUEST 
+
+curl "http://162.55.220.72:5005/terminal-hw-request"
+
+RESPONSE
+
+ % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   283  100   283    0     0   2359      0 --:--:-- --:--:-- --:--:--  2358{
+  "Intro": "Hello!! This is your the first response from server",
+  "Tasks": {
+    "Task_1": "Send the next URL in terminal: http://162.55.220.72:5005/get_method?name=(set_your_String)&age=(set_your_number)",
+    "result": [
+      "Your_String",
+      "Your_number"
+    ]
+  }
+}
+ 
+REQUEST
+
+curl  "http://162.55.220.72:5005/get_method?name=Liza&age=30"
+
+RESPONSE
+ 
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    22  100    22    0     0    182      0 --:--:-- --:--:-- --:--:--   183[
+  "Liza",
+  "30"
+]
+
+  
+=========
+
+The third part
+Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+
+Настроим Notepad++ в качестве редактора Git Bash
+
+$ git config --global core.editor "C:\Program Files (x86)\Notepad++.exe"
+
+Проверка настройки 
+
+$ git config --global core.editor
+C:\Program Files (x86)\Notepad++.exe
+
+Создадим паку group_30_free_2 ( для выполнения скрипта)
+mkdir group_30_free_2
+
+Создаем текстовый файл в Notepad++ с расширением .sh
+$ touch script.sh
+
+Откроем и отредактируем наш скрипт 
+$ vim script.sh
+
+Внесем текст с командами для скрипта 
+
+#!/bin/bash
+cd group_30_free_2
+mkdir qa1 qa2 qa3
+cd qa3
+touch readme.txt readme2.txt readme3.txt json1.json json2.json
+mkdir qa4 qa5 qa6
+ls -1a
+cd -
+mv qa3/readme3.txt qa3/readme.txt qa1/
+
+Закроем и сохраним файл 
+esc :wq Enter
+
+Сделаем его исполняемым 
+chmod +x ./script.sh
+
+Запустим скрипт 
+$ ./script.sh
